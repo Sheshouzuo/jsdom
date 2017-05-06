@@ -567,11 +567,11 @@ describe("jsdom/miscellaneous", () => {
     const doc = jsdom.jsdom("<html><head></head><body></body></html>",
                           { deferClose: true });
     const window = doc.defaultView;
-    assert.equal(window.onload, undefined);
+    assert.strictEqual(window.onload, null);
     doc.body.onload = () => {
       t.done();
     };
-    assert.notEqual(window.onload, undefined);
+    assert.notEqual(window.onload, null);
     doc.close();
   });
 
